@@ -1,0 +1,4 @@
+interface:
+  display_name: "Split Overgrown PR"
+  short_description: "Analyze scope creep and split PR work"
+  default_prompt: "Use $split-overgrown-pr to analyze why this PR grew, classify changes by scope, and propose follow-up PR splits."

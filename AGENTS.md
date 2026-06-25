@@ -9,6 +9,7 @@ Each top-level directory that contains `SKILL.md` is a skill:
 - `pr-review-loop/`
 - `pr-review-loop-v2/`
 - `merge-origin-main/`
+- `split-overgrown-pr/`
 
 Do not add auxiliary docs inside skill directories unless they are required skill resources. Keep repo-level docs in `README.md` or `AGENTS.md`.
 
@@ -20,6 +21,7 @@ The installed Codex skill paths should be symlinks back to this repo:
 /Users/pol/.codex/skills/pr-review-loop -> /Users/pol/repos/pol-skills/pr-review-loop
 /Users/pol/.codex/skills/pr-review-loop-v2 -> /Users/pol/repos/pol-skills/pr-review-loop-v2
 /Users/pol/.codex/skills/merge-origin-main -> /Users/pol/repos/pol-skills/merge-origin-main
+/Users/pol/.codex/skills/split-overgrown-pr -> /Users/pol/repos/pol-skills/split-overgrown-pr
 ```
 
 If a path under `/Users/pol/.codex/skills` is a real directory instead of a symlink, replace it with a symlink after confirming the repo copy is current.
