@@ -1,0 +1,4 @@
+interface:
+  display_name: "PR Review Loop"
+  short_description: "Iterate PR reviews until actionable issues are resolved"
+  default_prompt: "Use $pr-review-loop to review the current PR, address findings, and repeat until no P0-P2 issues remain."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Merge Origin Main"
+  short_description: "Merge origin/main, resolve conflicts, review, and push"
+  default_prompt: "Use $merge-origin-main to fetch origin/main, merge it into the current branch, resolve conflicts, review the result, and push."
