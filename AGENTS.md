@@ -1,6 +1,6 @@
 # Agent Notes
 
-This repository is the canonical source for Pol's personal Codex skills.
+This repository is the canonical source for Pol's personal agent skills.
 
 ## Layout
 
@@ -15,6 +15,10 @@ Do not add auxiliary docs inside skill directories unless they are required skil
 
 ## Installation Model
 
+Use symlinks so Codex and Claude Code both load the same files from this repository.
+
+### Codex
+
 The installed Codex skill paths should be symlinks back to this repo:
 
 ```bash
@@ -26,13 +30,28 @@ The installed Codex skill paths should be symlinks back to this repo:
 
 If a path under `/Users/pol/.codex/skills` is a real directory instead of a symlink, replace it with a symlink after confirming the repo copy is current.
 
+### Claude Code
+
+The installed global Claude Code skill paths should also be symlinks back to this repo:
+
+```bash
+/Users/pol/.claude/skills/pr-review-loop -> /Users/pol/repos/pol-skills/pr-review-loop
+/Users/pol/.claude/skills/pr-review-loop-v2 -> /Users/pol/repos/pol-skills/pr-review-loop-v2
+/Users/pol/.claude/skills/merge-origin-main -> /Users/pol/repos/pol-skills/merge-origin-main
+/Users/pol/.claude/skills/split-overgrown-pr -> /Users/pol/repos/pol-skills/split-overgrown-pr
+```
+
+Use `/Users/pol/.claude/skills` for global Claude Code availability. For project-scoped Claude Code installation, create the same symlinks under `<project>/.claude/skills` instead.
+
+If a path under `/Users/pol/.claude/skills` or `<project>/.claude/skills` is a real directory instead of a symlink, replace it with a symlink after confirming the repo copy is current.
+
 ## Keeping Skills In Sync
 
 - Treat `/Users/pol/repos/pol-skills` as the source of truth.
 - Edit the repo copy, not the installed symlink path, unless you have confirmed the installed path resolves into this repo.
 - After changing a skill, validate `SKILL.md` frontmatter and `agents/openai.yaml` if present.
 - Commit skill changes in this repo and push to `origin`.
-- When adding a new skill, add the top-level skill directory here, create the matching symlink in `/Users/pol/.codex/skills`, update `README.md`, and commit everything.
+- When adding a new skill, add the top-level skill directory here, create matching symlinks in `/Users/pol/.codex/skills` and `/Users/pol/.claude/skills`, update `README.md` and this file, and commit everything.
 
 ## Validation
 
