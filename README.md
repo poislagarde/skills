@@ -4,7 +4,7 @@ Private repository for reusable agent skills, loaded by both Codex and Claude Co
 
 ## Skills
 
-- `pr-review-loop-v2` - Iterative developer/reviewer loop until P0-P2 findings are fixed or legitimately rejected; keeps the PR to one scope and clusters valid out-of-scope findings into user-selected follow-up PRs.
+- `pr-review-loop` - Iterative developer/reviewer loop until P0-P2 findings are fixed or legitimately rejected; keeps the PR to one scope and clusters valid out-of-scope findings into user-selected follow-up PRs.
 - `merge-origin-main` - Merge `origin/main` into the current branch, resolve conflicts as integration work, verify, and push.
 - `split-overgrown-pr` - Analyze an overloaded PR, explain why changes exist, and plan cluster-level PR splits.
 - `revive-stale-pr` - Pick up an old PR: decide if it is still needed, bring it current, and plan the production rollout with manual steps flagged.
@@ -14,7 +14,7 @@ Private repository for reusable agent skills, loaded by both Codex and Claude Co
 Install by symlink so both tools load the same files and edits in this repo take effect immediately:
 
 ```bash
-for s in pr-review-loop-v2 merge-origin-main split-overgrown-pr revive-stale-pr; do
+for s in pr-review-loop merge-origin-main split-overgrown-pr revive-stale-pr; do
   ln -sfn /Users/pol/repos/pol-skills/$s /Users/pol/.codex/skills/$s
   ln -sfn /Users/pol/repos/pol-skills/$s /Users/pol/.claude/skills/$s
 done

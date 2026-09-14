@@ -1,4 +1,0 @@
-interface:
-  display_name: "PR Review Loop v2"
-  short_description: "Review PRs, keep scope, and cluster follow-ups"
-  default_prompt: "Use $pr-review-loop-v2 to review the current PR, address in-scope findings, cluster out-of-scope findings, and let me choose follow-up clusters."
