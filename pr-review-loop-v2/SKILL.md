@@ -1,6 +1,6 @@
 ---
 name: pr-review-loop-v2
-description: Run an iterative developer/reviewer loop on a pull request until all in-scope P0-P2 findings are fixed or legitimately rejected, keeping the PR to one scope, clustering valid out-of-scope findings into separate follow-up PR candidates, and asking the user which clusters to address. Use when the user asks Codex to spawn reviewers, review the current PR repeatedly, address review findings, counter or reject bad findings, commit fixes, split an overloaded PR, or decide when a PR is done.
+description: Run an iterative developer/reviewer loop on a pull request until all in-scope P0-P2 findings are fixed or legitimately rejected, keeping the PR to one scope, clustering valid out-of-scope findings into separate follow-up PR candidates, and asking the user which clusters to address. Use when the user asks to spawn reviewers, review the current PR repeatedly, address review findings, counter or reject bad findings, commit fixes, split an overloaded PR, or decide when a PR is done.
 ---
 
 # PR Review Loop v2

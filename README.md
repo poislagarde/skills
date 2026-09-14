@@ -1,36 +1,28 @@
-# Personal Codex Skills
+# Personal Agent Skills
 
-Private repository for reusable Codex skills.
+Private repository for reusable agent skills, loaded by both Codex and Claude Code.
 
 ## Skills
 
 - `pr-review-loop` - Run an iterative developer/reviewer loop until P0-P2 PR findings are fixed or legitimately rejected.
-- `pr-review-loop-v2` - Keep a PR scoped while clustering valid out-of-scope findings into user-selected follow-up PRs.
-- `merge-origin-main` - Fetch `origin/main`, merge it into the current branch, resolve conflicts, review the result, verify, and push.
+- `pr-review-loop-v2` - Same loop, but keeps the PR to one scope and clusters valid out-of-scope findings into user-selected follow-up PRs.
+- `merge-origin-main` - Merge `origin/main` into the current branch, resolve conflicts as integration work, verify, and push.
 - `split-overgrown-pr` - Analyze an overloaded PR, explain why changes exist, and plan cluster-level PR splits.
+- `revive-stale-pr` - Pick up an old PR: decide if it is still needed, bring it current, and plan the production rollout with manual steps flagged.
 
 ## Local Installation
 
-These skills are intended to be installed by symlink from Codex's local skills directory:
+Install by symlink so both tools load the same files and edits in this repo take effect immediately:
 
 ```bash
-ln -s /Users/pol/repos/pol-skills/pr-review-loop /Users/pol/.codex/skills/pr-review-loop
-ln -s /Users/pol/repos/pol-skills/pr-review-loop-v2 /Users/pol/.codex/skills/pr-review-loop-v2
-ln -s /Users/pol/repos/pol-skills/merge-origin-main /Users/pol/.codex/skills/merge-origin-main
-ln -s /Users/pol/repos/pol-skills/split-overgrown-pr /Users/pol/.codex/skills/split-overgrown-pr
+for s in pr-review-loop pr-review-loop-v2 merge-origin-main split-overgrown-pr revive-stale-pr; do
+  ln -sfn /Users/pol/repos/pol-skills/$s /Users/pol/.codex/skills/$s
+  ln -sfn /Users/pol/repos/pol-skills/$s /Users/pol/.claude/skills/$s
+done
 ```
 
-When installed this way, editing the repo copy updates the active Codex skill immediately.
+For a project-scoped Claude Code install, create the same symlinks under `<project>/.claude/skills`.
 
-## Updating Skills
+## Authoring and Updating
 
-Edit skills in this repository, then commit and push:
-
-```bash
-git status
-git add <skill>
-git commit -m "Update <skill>"
-git push
-```
-
-Avoid editing copied skill folders under `/Users/pol/.codex/skills`. Those paths should be symlinks back to this repository.
+Conventions for writing skills live in `AGENTS.md`. Edit skills here, validate, then commit and push. Never edit the installed symlink paths directly.

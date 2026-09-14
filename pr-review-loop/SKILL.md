@@ -1,6 +1,6 @@
 ---
 name: pr-review-loop
-description: Run an iterative developer/reviewer loop on a pull request until all P0-P2 findings are fixed or legitimately rejected. Use when the user asks Codex to spawn reviewers, review the current PR repeatedly, address review findings, counter or reject bad findings, commit fixes, or decide when a PR is done.
+description: Run an iterative developer/reviewer loop on a pull request until all P0-P2 findings are fixed or legitimately rejected. Use when the user asks to spawn reviewers, review the current PR repeatedly, address review findings, counter or reject bad findings, commit fixes, or decide when a PR is done.
 ---
 
 # PR Review Loop
