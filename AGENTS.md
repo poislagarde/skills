@@ -6,7 +6,6 @@ This repository is the canonical source for Pol's personal agent skills. They lo
 
 Each top-level directory that contains `SKILL.md` is a skill:
 
-- `pr-review-loop/`
 - `pr-review-loop-v2/`
 - `merge-origin-main/`
 - `split-overgrown-pr/`
@@ -38,7 +37,6 @@ Use symlinks so Codex and Claude Code both load the same files from this reposit
 The installed Codex skill paths should be symlinks back to this repo:
 
 ```bash
-/Users/pol/.codex/skills/pr-review-loop -> /Users/pol/repos/pol-skills/pr-review-loop
 /Users/pol/.codex/skills/pr-review-loop-v2 -> /Users/pol/repos/pol-skills/pr-review-loop-v2
 /Users/pol/.codex/skills/merge-origin-main -> /Users/pol/repos/pol-skills/merge-origin-main
 /Users/pol/.codex/skills/split-overgrown-pr -> /Users/pol/repos/pol-skills/split-overgrown-pr
@@ -52,7 +50,6 @@ If a path under `/Users/pol/.codex/skills` is a real directory instead of a syml
 The installed global Claude Code skill paths should also be symlinks back to this repo:
 
 ```bash
-/Users/pol/.claude/skills/pr-review-loop -> /Users/pol/repos/pol-skills/pr-review-loop
 /Users/pol/.claude/skills/pr-review-loop-v2 -> /Users/pol/repos/pol-skills/pr-review-loop-v2
 /Users/pol/.claude/skills/merge-origin-main -> /Users/pol/repos/pol-skills/merge-origin-main
 /Users/pol/.claude/skills/split-overgrown-pr -> /Users/pol/repos/pol-skills/split-overgrown-pr
