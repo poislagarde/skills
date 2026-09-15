@@ -1,6 +1,6 @@
 # Personal Agent Skills
 
-Private repository for reusable agent skills, loaded by both Codex and Claude Code.
+Reusable agent skills, loaded by both Codex and Claude Code.
 
 ## Skills
 
@@ -11,16 +11,24 @@ Private repository for reusable agent skills, loaded by both Codex and Claude Co
 
 ## Local Installation
 
-Install by symlink so both tools load the same files and edits in this repo take effect immediately:
+From this checkout, run:
 
 ```bash
-for s in pr-review-loop merge-origin-main split-overgrown-pr revive-stale-pr; do
-  ln -sfn /Users/pol/repos/pol-skills/$s /Users/pol/.codex/skills/$s
-  ln -sfn /Users/pol/repos/pol-skills/$s /Users/pol/.claude/skills/$s
-done
+python3 scripts/install_skills.py
 ```
 
-For a project-scoped Claude Code install, create the same symlinks under `<project>/.claude/skills`.
+The installer discovers every top-level `SKILL.md` and links its directory into:
+
+- `~/.agents/skills` for Codex, following the [official skill discovery documentation](https://learn.chatgpt.com/docs/build-skills#where-to-save-skills).
+- `~/.claude/skills` for Claude Code.
+
+Both tools read the same source files. Rerunning the installer is safe: it leaves correct links in place and refuses to overwrite local copies or links to another checkout. It removes legacy `~/.codex/skills` links only when they point to the same skill in this checkout.
+
+For project-scoped installs, use `<project>/.agents/skills` for Codex or `<project>/.claude/skills` for Claude Code.
+
+### If a skill is missing
+
+Rerun the installer and restart Codex if the skill list has not refreshed. Check `~/.codex/config.toml` (or `$CODEX_HOME/config.toml` when set) for a `[[skills.config]]` entry targeting the skill's `SKILL.md`. An entry with `enabled = false` disables an otherwise valid installation; change it to `true` to re-enable that skill and restart Codex.
 
 ## Authoring and Updating
 

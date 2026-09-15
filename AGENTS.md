@@ -23,9 +23,9 @@ These follow Anthropic's skill best practices (https://platform.claude.com/docs/
 
 ## Installation
 
-Every skill directory here is symlinked under the same name into `/Users/pol/.codex/skills` and `/Users/pol/.claude/skills`, so both tools load the same files and edits take effect immediately. The command is in `README.md`. For a project-scoped Claude Code install, use `<project>/.claude/skills` instead.
+Run `python3 scripts/install_skills.py` to symlink every skill directory under the same name into `~/.agents/skills` for Codex and `~/.claude/skills` for Claude Code. Both tools read the files in this checkout. The installer also removes matching legacy links from `~/.codex/skills`. For project-scoped installs, use `<project>/.agents/skills` for Codex or `<project>/.claude/skills` for Claude Code.
 
-If an installed path is a real directory instead of a symlink, replace it with a symlink after confirming the repo copy is current.
+The installer refuses to overwrite local directories or links to another checkout. Reconcile those copies before replacing them. If a skill is still missing, check for an explicit disabled entry in the user's Codex configuration and restart Codex after changing it. Keep machine-specific paths and settings out of this repository.
 
 ## Workflow
 
@@ -33,7 +33,7 @@ If an installed path is a real directory instead of a symlink, replace it with a
 - After changing a skill, run the validator:
 
   ```bash
-  python3 /Users/pol/.codex/skills/.system/skill-creator/scripts/quick_validate.py /Users/pol/repos/pol-skills/<skill-name>
+  python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" ./<skill-name>
   ```
 
 - Commit and push to `origin`.
