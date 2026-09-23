@@ -1,6 +1,6 @@
 ---
 name: pr-review-loop
-description: Run an iterative developer/reviewer loop on a pull request until all in-scope P0-P2 findings are fixed or legitimately rejected, keeping the PR to one scope, clustering valid out-of-scope findings into separate follow-up PR candidates, and asking the user which clusters to address. Use when the user asks to spawn reviewers, review the current PR repeatedly, address review findings, counter or reject bad findings, commit fixes, split an overloaded PR, or decide when a PR is done.
+description: Run an iterative developer/reviewer loop on a pull request until all in-scope P0-P2 findings are fixed or legitimately rejected, keeping the PR to one scope, clustering valid out-of-scope findings into separate follow-up PR candidates, and asking the user which clusters to address. Use when the user asks to spawn reviewers, review the current PR repeatedly, address review findings, counter or reject bad findings, commit fixes, or decide when a PR is done.
 ---
 
 # PR Review Loop
@@ -144,10 +144,10 @@ When stopping, summarize:
 Pass this block verbatim when spawning each reviewer:
 
 ```text
-Review the current PR with extra-high reasoning effort.
+Review the current PR.
 - The PR's scope contract is attached. Judge every finding against it.
 - The current spillover cluster list is attached. For valid out-of-scope findings, assign the finding to an existing cluster id or propose a new cluster with a short reason it does not fit the existing clusters.
-- Severity P0-P3. Report only P0-P2; P3 is noise.
+- Report every finding, including uncertain and low-severity ones, with a severity (P0-P3) and your confidence. The developer filters: only P0-P2 are acted on.
 - Flag any repeated code or missed modularization opportunities.
 - Tag each finding in-scope or out-of-scope for this PR. For out-of-scope findings, say whether they are still valid and worth fixing (a follow-up PR) or rejectable, propose cluster placement, and note any coupling to other findings (changes that must ship together). Out-of-scope is not a reason to skip reporting; report it tagged so it can be routed, not dropped or jammed into this PR.
 - A rejection list from prior rounds may be attached. For each item, concede or counter with a new argument. Do not re-raise.

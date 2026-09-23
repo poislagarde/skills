@@ -1,6 +1,6 @@
 ---
 name: split-overgrown-pr
-description: Analyze a pull request that may have grown out of scope, explain why review-agent or follow-up changes were made, classify changes against the PR thesis, cluster out-of-scope work into independently mergeable pieces, and produce a user-approved split plan. Use when returning to an old PR, auditing review-agent changes, deciding what belongs in the current PR, or breaking an overloaded PR into smaller PRs.
+description: Analyze a pull request that may have grown out of scope, explain why review-agent or follow-up changes were made, classify changes against the PR thesis, cluster out-of-scope work into independently mergeable pieces, and produce a user-approved split plan. Use when auditing review-agent changes, deciding what belongs in the current PR, or breaking an overloaded PR into smaller PRs.
 ---
 
 # Split Overgrown PR
