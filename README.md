@@ -8,6 +8,7 @@ Reusable agent skills, loaded by both Codex and Claude Code.
 - `merge-origin-main` - Merge `origin/main` into the current branch, resolve conflicts as integration work, verify, and push.
 - `split-overgrown-pr` - Analyze an overloaded PR, explain why changes exist, and plan cluster-level PR splits.
 - `revive-stale-pr` - Pick up an old PR: decide if it is still needed, bring it current, and plan the production rollout with manual steps flagged.
+- `fork-herdr` - Fork the current Claude Code session into a new herdr tab and its own git worktree to chase a side issue while the original session continues.
 
 ## Local Installation
 
