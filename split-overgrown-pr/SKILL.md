@@ -5,7 +5,7 @@ description: Analyze a pull request that may have grown out of scope, explain wh
 
 # Split Overgrown PR
 
-Use this skill when a PR has accumulated extra changes and the user needs to understand what happened, what still belongs in the current PR, and what should become separate PRs.
+Work out why a PR accumulated extra changes, what still belongs in it, and what should become separate PRs.
 
 The default mode is analysis-first. Do not move code, rewrite history, push branches, or open PRs until the user approves a cluster-level split plan.
 
@@ -16,7 +16,7 @@ The default mode is analysis-first. Do not move code, rewrite history, push bran
 - Separate confirmed evidence from inference.
 - Classify work as in scope, out of scope, revert/remove, or needs decision.
 - Cluster out-of-scope work into separate follow-up PR candidates.
-- Give the user control at the cluster level, not one file or finding at a time.
+- Give the user control at the cluster level, not one file or change at a time.
 
 ## Orient
 
@@ -48,7 +48,7 @@ Build a change inventory before recommending action. Group related changes by be
 For each group record:
 
 - `id`: Stable short id.
-- `title`: Human-readable cluster title.
+- `title`: Human-readable group title.
 - `files`: Important files touched.
 - `why`: Confirmed or inferred reason the change was made.
 - `evidence`: Commit messages, review comments, tests, code references, or diff context.
@@ -104,7 +104,7 @@ Show:
 - Needs-decision items.
 - Recommended default action.
 
-Ask the user which clusters to address now. The user should choose clusters, not individual findings. Do not implement unselected clusters. Mark unselected clusters as deferred unless the user rejects or blocks them.
+Ask the user which clusters to address now. The user should choose clusters, not individual changes. Do not implement unselected clusters. Mark unselected clusters as deferred unless the user rejects or blocks them.
 
 ## Split Execution
 
@@ -115,7 +115,7 @@ When splitting:
 1. Confirm the working tree is clean or that any dirty changes are intentional.
 2. Preserve a backup reference to the original branch.
 3. Create one branch per selected follow-up cluster from the correct base branch.
-4. Move only that cluster's files/commits into its branch, using cherry-pick, patch application, or careful manual edits as appropriate.
+4. Move only that cluster's commits into its branch by cherry-pick; where a commit mixes clusters, carry over only that cluster's hunks.
 5. Remove selected out-of-scope work from the current PR branch so it returns to the `scope_contract`.
 6. Run relevant tests or validation on the current PR branch and each follow-up branch.
 7. Push or open PRs only when the user has explicitly approved that action.
@@ -127,7 +127,7 @@ Prefer clear, reviewable commits over clever history surgery. If a clean split w
 For an analysis-only run, return:
 
 - The recovered `scope_contract`.
-- A change inventory grouped by cluster.
+- A change inventory grouped by behavior.
 - Why the review agent likely made each major change, with evidence labeled confirmed or inferred.
 - Recommended current-PR contents.
 - Proposed follow-up PR clusters.

@@ -13,7 +13,7 @@ Keep the PR to one thesis. The loop's main failure mode is scope creep: a review
 
 Maintain these items throughout the loop:
 
-- `scope_contract`: The PR's thesis - what it is and is not for. Establish it in round 1 from the PR title, description, and the shape of the existing diff; restate it to every reviewer. Every finding is judged against it. Example: "Adds reusable Skills to the toolbox - main-ui toolbox UI, ai-worker prompt injection, event-processor pass-through. NOT a security sweep of connectors or a change to deploy infra."
+- `scope_contract`: The PR's thesis - what it is and is not for. Establish it in round 1 from the PR title, description, and the shape of the existing diff; restate it to every reviewer. Every finding is judged against it.
 - `round`: Start at 1.
 - `rejection_list`: Start empty. Add one line per final rejection, with the finding summary and why it is wrong or purely stylistic.
 - `spillover_clusters`: Start empty. This is the developer-owned canonical list of valid out-of-scope work. Each cluster is an independently mergeable follow-up PR candidate and records: stable id, title, max severity, findings, likely files, owned commits if any, coupling/dependencies, proposed branch name, proposed PR title, one-line rationale, and disposition (`candidate`, `selected`, `deferred`, `rejected`, or `blocked`).
@@ -122,9 +122,8 @@ Partition the accumulated work by scope so the feature PR carries only its thesi
 
 1. List every commit and changed file made during the loop. Bucket each as feature-branch (in scope per `scope_contract`) or exactly one selected `spillover_clusters` entry.
 2. Check the selected clusters respect coupling: changes that force each other must ship together (a new migration + the deploy-gating and secrets it forces; a webhook auth change + its SSM/config change). Sanity-test each selected cluster: would it build, test, and make sense merged on its own?
-3. For each selected spillover cluster, prepare one follow-up PR branch off the base (usually main) carrying only that cluster's commits (cherry-pick), a title and description, and removal of those commits from the feature branch so the feature PR is left with only in-scope changes.
-4. Re-run the repo's affected tests/build on the feature branch and each selected follow-up branch.
-5. Default to preparing the branches and a split plan, then stop for the user before pushing or opening PRs. Push or open PRs only when the user has authorized it.
+3. Move each selected cluster to its own follow-up branch and remove it from the feature branch with the `split-overgrown-pr` skill's Split Execution. The loop's `scope_contract`, `spillover_clusters`, and Cluster Selection stand in for that skill's analysis and selection gate.
+4. Default to preparing the branches and a split plan, then stop for the user before pushing or opening PRs. Push or open PRs only when the user has authorized it.
 
 The split plan lists, per selected cluster: the files/commits, proposed branch name, title, dependencies, and one-line rationale. Also list deferred, rejected, and blocked clusters separately so valid out-of-scope findings are not lost.
 

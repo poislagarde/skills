@@ -37,4 +37,4 @@ The installer refuses to overwrite local directories or links to another checkou
   ```
 
 - Commit and push to `origin`.
-- When adding or removing a skill, also update the symlinks in both tools and the skill list in `README.md`.
+- When adding or removing a skill, update the skill list in `README.md` and rerun the installer. The installer does not remove links to a deleted skill; delete those from both skill directories by hand.
