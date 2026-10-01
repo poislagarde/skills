@@ -1,0 +1,4 @@
+interface:
+  display_name: "Take Stock"
+  short_description: "Take stock of the session: done, status, next steps"
+  default_prompt: "Use $take-stock to summarize what was done in this session so far, the status of each item, and step-by-step instructions for the next steps."

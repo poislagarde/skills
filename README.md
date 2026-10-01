@@ -9,6 +9,7 @@ Reusable agent skills, loaded by both Codex and Claude Code.
 - `split-overgrown-pr` - Analyze an overloaded PR, explain why changes exist, and plan cluster-level PR splits.
 - `revive-stale-pr` - Pick up an old PR: decide if it is still needed, bring it current, and plan the production rollout with manual steps flagged.
 - `fork-herdr` - Fork the current Claude Code session into a new herdr tab and its own git worktree to chase a side issue while the original session continues.
+- `take-stock` - Take stock of the current session: what was done, the verified status of each item, and step-by-step next steps.
 
 ## Local Installation
 
